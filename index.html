@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STACC | Linux Installation Party</title>
+    <meta name="description" content="Register for the STACC Linux Installation Party. Get help installing your favourite Linux distro and join the bash scripting workshop." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+  <body>
+
+    <!-- ═══════════════════════════════════════════════════════
+         PAGE 1 — Swipe to Continue
+         ═══════════════════════════════════════════════════════ -->
+    <section id="page-1" class="page active">
+      <!-- Animated background dots -->
+      <div class="bg-dots"></div>
+
+      <div class="logo-area">
+        <div class="logo-main">
+          <span class="logo-text">ST</span>
+          <!-- Inline SVG — Arch "A" logo -->
+          <svg class="logo-arch" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+            <path d="M31.994-.006c-2.85 6.985-4.568 11.554-7.74 18.332 1.945 2.062 4.332 4.462 8.2 7.174-4.168-1.715-7-3.437-9.136-5.224-4.06 8.47-10.42 20.538-23.327 43.73C10.145 58.15 18 54.54 25.338 53.16c-.315-1.354-.494-2.818-.48-4.345l.012-.325c.16-6.5 3.542-11.498 7.547-11.158s7.118 5.886 6.957 12.386a18.36 18.36 0 0 1-.409 3.491c7.25 1.418 15.03 5.02 25.037 10.797l-5.42-10.026c-2.65-2.053-5.413-4.726-11.05-7.62 3.875 1.007 6.65 2.168 8.8 3.467-17.1-31.84-18.486-36.07-24.35-49.833z" fill="#1793d1" fill-rule="evenodd"/>
+          </svg>
+          <span class="logo-text">CC</span>
+        </div>
+        <p class="subtitle">Linux Installation Party</p>
+      </div>
+
+      <div class="swipe-container">
+        <div class="swipe-track">
+          <div class="swipe-fill"></div>
+          <div class="swipe-ball" id="swipeBall">
+            <!-- Arrow icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 6 15 12 9 18"></polyline>
+            </svg>
+          </div>
+          <span class="swipe-text">swipe to continue →</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         PAGE 2 — Registration Form
+         ═══════════════════════════════════════════════════════ -->
+    <section id="page-2" class="page">
+      <div class="container col-11 col-sm-10 col-md-8 col-lg-6 stacc-card-wrapper">
+        <h2 class="stacc-floating-title">stacc</h2>
+        <div class="stacc-main-card">
+          <form id="staccForm" novalidate>
+
+            <!-- Name -->
+            <div class="field-group">
+              <label class="form-label" for="nameInput">Name</label>
+              <input type="text" class="form-control" id="nameInput" name="name" placeholder="Your full name" autocomplete="name" />
+              <span class="error-message" id="nameInput-error"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="field-group">
+              <label class="form-label" for="emailInput">Email</label>
+              <input type="email" class="form-control" id="emailInput" name="email" placeholder="you@example.com" autocomplete="email" />
+              <span class="error-message" id="emailInput-error"></span>
+            </div>
+
+            <!-- Phone -->
+            <div class="field-group">
+              <label class="form-label" for="phoneInput">Phone</label>
+              <input type="tel" class="form-control no-spinner" id="phoneInput" name="phone" placeholder="98765 43210" maxlength="10" autocomplete="tel" />
+              <span class="error-message" id="phoneInput-error"></span>
+            </div>
+
+            <!-- Distro -->
+            <div class="field-group">
+              <label class="form-label" for="distroSelect">Which Linux distro do you want to install?</label>
+              <select class="form-select custom-select" id="distroSelect" name="distro">
+                <option value="" disabled selected>Select an OS</option>
+                <option value="arch">Arch (btw)</option>
+                <option value="ubuntu">Ubuntu</option>
+                <option value="mint">Linux Mint</option>
+                <option value="pop_os">Pop!_OS</option>
+                <option value="fedora">Fedora</option>
+                <option value="other">Something else</option>
+                <option value="clueless">I have no clue</option>
+              </select>
+              <span class="error-message" id="distroSelect-error"></span>
+            </div>
+
+            <!-- 100 GB free space? -->
+            <div class="field-group">
+              <label class="form-label">Do you have at least 100 GB of free space?</label>
+              <div class="radio-row">
+                <label class="radio-container">
+                  <input type="radio" name="space_check" value="yes" />
+                  <span class="custom-radio"></span> Yes
+                </label>
+                <label class="radio-container">
+                  <input type="radio" name="space_check" value="no" />
+                  <span class="custom-radio"></span> No
+                </label>
+              </div>
+              <span class="error-message" id="space_check-error"></span>
+            </div>
+
+            <!-- USB stick? -->
+            <div class="field-group">
+              <label class="form-label">Can you bring a USB stick (8 GB+) for the installation?</label>
+              <div class="radio-row">
+                <label class="radio-container">
+                  <input type="radio" name="usb_check" value="yes" />
+                  <span class="custom-radio"></span> Yes
+                </label>
+                <label class="radio-container">
+                  <input type="radio" name="usb_check" value="no" />
+                  <span class="custom-radio"></span> No
+                </label>
+              </div>
+              <span class="error-message" id="usb_check-error"></span>
+            </div>
+
+            <!-- Linux Familiarity -->
+            <div class="field-group">
+              <label class="form-label">How familiar are you with Linux?</label>
+              <div class="range-wrapper">
+                <input type="range" class="form-range custom-range" min="1" max="10" step="1" value="1" id="linuxRange" name="linux_familiarity" />
+                <div class="range-points">
+                  <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                  <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                </div>
+              </div>
+              <div class="range-info">
+                <span class="range-label">Level: <strong id="linuxTag">Noob</strong></span>
+                <span class="range-value" id="rangeValue">1</span>
+              </div>
+            </div>
+
+            <!-- Command Line Familiarity -->
+            <div class="field-group">
+              <label class="form-label">How familiar are you with a command line / terminal?</label>
+              <div class="range-wrapper">
+                <input type="range" class="form-range custom-range" min="1" max="10" step="1" value="1" id="cmdRange" name="cmd_familiarity" />
+                <div class="range-points">
+                  <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                  <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                </div>
+              </div>
+              <div class="range-info">
+                <span class="range-label">Level: <strong id="cmdTag">Beginner</strong></span>
+                <span class="range-value" id="cmdValue">1</span>
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="field-group notes-block">
+              <div class="note-card">
+                <!-- <span class="note-icon">💡</span> -->
+                <p>It is highly recommended to bring a USB bootable stick with a Linux ISO, along with your laptop, so we can speed things up.</p>
+              </div>
+              <div class="note-card">
+                <!-- <span class="note-icon">🤝</span> -->
+                <p>If you're unable to bring a USB stick or download the ISO beforehand, feel free to reach out to any STACC member — we'll help you out.</p>
+              </div>
+            </div>
+
+            <!-- Bash Workshop -->
+            <div class="field-group">
+              <label class="form-label">Are you interested in the bash scripting workshop after the installation?</label>
+              <div class="radio-row">
+                <label class="radio-container">
+                  <input type="radio" name="bash_workshop" value="yes" />
+                  <span class="custom-radio"></span> Yes
+                </label>
+                <label class="radio-container">
+                  <input type="radio" name="bash_workshop" value="no" />
+                  <span class="custom-radio"></span> No
+                </label>
+              </div>
+              <span class="error-message" id="bash_workshop-error"></span>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <span class="btn-text">Submit</span>
+              <span class="btn-loader" style="display:none;">
+                <span class="spinner"></span> Submitting…
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="form-footer">
+        Need help? Reach out to us at <a href="tel:+1234567890">+1 (234) 567-890</a>
+      </footer>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         PAGE 3 — Thank You
+         ═══════════════════════════════════════════════════════ -->
+    <section id="page-3" class="page">
+      <div class="thank-you-content">
+        <div class="thank-you-check">
+          <svg viewBox="0 0 52 52" class="checkmark">
+            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+            <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+          </svg>
+        </div>
+        <h1 class="thank-you-title">You're In!</h1>
+        <p class="thank-you-subtitle">See you at the Linux Installation Party 🐧</p>
+        <p class="thank-you-detail">Check your email for confirmation details.</p>
+      </div>
+    </section>
+
+    <!-- Scripts: api → validate → app -->
+    <script src="api.js"></script>
+    <script src="validate.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
