@@ -223,3 +223,7 @@ staccForm.addEventListener('submit', async (e) => {
 document.addEventListener('DOMContentLoaded', () => {
   window.StaccValidation.initValidation();
 });
+
+function downloadCSV(){
+  window.open("http://localhost:5000/api/admin/export","_blank");
+}
