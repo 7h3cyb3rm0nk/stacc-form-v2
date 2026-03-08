@@ -231,6 +231,8 @@ body {
 
 #page-2.active {
   display: flex;
+  min-height: max-content;
+  overflow: scroll;
 }
 
 .stacc-card-wrapper {
