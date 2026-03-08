@@ -11,7 +11,7 @@
 
 // ─── Configuration ──────────────────────────────────────────
 const API_CONFIG = {
-  BASE_URL: 'http://localhost:5000',                         // Set to your backend URL, e.g. 'https://api.stacc.club'
+  BASE_URL: 'https://stacc-form-v2.onrender.com',                         // Set to your backend URL, e.g. 'https://api.stacc.club'
   ENDPOINTS: {
     REGISTER: '/api/registrations',     // POST endpoint for form submissions
   },
