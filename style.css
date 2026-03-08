@@ -628,22 +628,51 @@ body {
 
 /* ─── 12. FOOTER ─────────────────────────────────────────── */
 .form-footer {
-  position: absolute;
-  bottom: 16px;
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.35);
-  z-index: 11;
-  font-weight: 500;
+  position: relative;
+  margin-top:30px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  text-align:center;
+  font-size:0.85rem;
+  color:rgba(255,255,255,0.6);
+  font-weight:500;
+}
+
+.footer-title{
+  width:100%;
+  margin-bottom:8px;
+  font-weight:600;
 }
 
 .form-footer a {
-  color: var(--color-accent);
-  text-decoration: none;
-  font-weight: 600;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:var(--color-accent);
+  text-decoration:none;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:8px;
+  transition: all 0.2s ease;
 }
 
 .form-footer a:hover {
-  text-decoration: underline;
+  background:rgba(255,255,255,0.8);
+  text-decoration:none;
+}
+
+.form-footer i{
+  color:#25D366;
+}
+
+@media (max-width:480px){
+  .form-footer{
+    font-size:0.75rem;
+    padding:15px 10px;
+  }
 }
 
 /* ─── 13. PAGE 3 — THANK YOU ─────────────────────────────── */
