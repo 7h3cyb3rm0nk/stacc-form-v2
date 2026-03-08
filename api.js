@@ -15,7 +15,7 @@ const API_CONFIG = {
   ENDPOINTS: {
     REGISTER: '/api/registrations',     // POST endpoint for form submissions
   },
-  TIMEOUT_MS: 10000,                    // 10 second timeout
+  TIMEOUT_MS: 60000,                    // 10 second timeout
   MAX_RETRIES: 1,                       // Retry once on network failure
 };
 
